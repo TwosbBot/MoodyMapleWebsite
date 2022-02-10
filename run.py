@@ -12,5 +12,8 @@ def index():
 def get_fastbuilder(file_name):
     dir =  "./resource/mr-fastbuilder"
 
+
 if __name__ == "__main__":
+    # flask run --host=0.0.0.0
+    # or use `python -m flask`
     app.run(debug=False, port=80)
