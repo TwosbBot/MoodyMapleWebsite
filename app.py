@@ -31,7 +31,7 @@ def get_plugin(file_name):
     except Exception as e:
         return jsonify({"code": 500, "message": f"啊咧? 好像出错了呢qaq\nError: {e}\n尝试联系管理员吧: qq1758489207 qq614286773"})
 
-@app.route("/help/fastbuilder")
+@app.route("/help/fastbuilder", methods=["GET"])
 def get_fastbuilder_doc():
     doc_path = "./resource/templates/mrfb.html"
     try:
@@ -44,8 +44,8 @@ def get_fastbuilder_doc():
 
 
 #  记得filename要加文件后缀!
-@app.route("/help/plugins/<filename>")
-def get_fastbuilder_doc(filename):
+@app.route("/help/plugins/<filename>", methods=["GET"])
+def get_plugin_doc(filename):
     doc_path = "./resource/templates/plugins/"
     try:
         response = make_response(
