@@ -8,8 +8,8 @@
     text-decoration: none;
 }
 
-#welcome-page {
-    padding-top: 15rem;
+#welcome-page  {
+    padding-top: 10rem;
 }
 
 .title {
@@ -17,6 +17,10 @@
 }
 
 .subtitle {
-    margin: 10% auto;
-    padding-bottom: 50%;
+    margin: 3rem auto;
+    padding-bottom: 15rem;
+}
+
+#server-info {
+    margin-bottom: 10rem;
 }
