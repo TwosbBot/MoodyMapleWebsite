@@ -8,7 +8,7 @@ def index():
            ""
 
 # https://blog.csdn.net/xw_2_xh/article/details/96175571
-@app.route('/download/mr-fastbuilder/', methods=["GET"])
+@app.route('/download/mr-fastbuilder', methods=["GET"])
 def get_fastbuilder():
     fbdir = "./resource/download/fastbuilder/"
     try:
@@ -34,13 +34,13 @@ def get_plugin(file_name):
 @app.route("/help/fastbuilder", methods=["GET"])
 def get_fastbuilder_doc():
     doc_path = "./resource/templates/mrfb.html"
-    try:
-        response = make_response(
-            render_template(doc_path)
-        )
-        return response
-    except Exception as e:
-        return jsonify({"code": 500, "message": f"啊咧? 好像出错了呢qaq\nError: {e}\n尝试联系管理员吧: qq1758489207 qq614286773"})
+    # try:
+    response = make_response(
+        render_template(doc_path)
+    )
+    return response
+    # except Exception as e:
+    #     return jsonify({"code": 500, "message": f"啊咧? 好像出错了呢qaq\nError: {e}\n尝试联系管理员吧: qq1758489207 qq614286773"})
 
 
 #  记得filename要加文件后缀!
@@ -59,4 +59,4 @@ def get_plugin_doc(filename):
 if __name__ == "__main__":
     # flask run --host=0.0.0.0
     # or using `python -m flask`
-    app.run(debug=False, port=80, host="0,0,0,0")
+    app.run(debug=False, port=80, host="0.0.0.0")
