@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#a-fb {
+    color:#00BC8A;
+    text-decoration: none;
+}
+
+#welcome-page  {
+    padding-top: 10rem;
+}
+
+.title {
+    color:#00BC8A   
+}
+
+.subtitle {
+    margin: 3rem auto;
+    padding-bottom: 15rem;
+}
+
+#server-info {
+    margin-bottom: 10rem;
+}
