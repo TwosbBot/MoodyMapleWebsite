@@ -8,7 +8,7 @@ def index():
     )
     return response
 
-@app.route("/auth/bundle", method=["POST"])
+@app.route("/auth/bundle", methods=["POST"])
 def auth_bundle():
     server, account = request.form["server"], request.form["account"]
     print(server, account)
