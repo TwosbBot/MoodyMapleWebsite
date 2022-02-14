@@ -61,4 +61,4 @@ def get_plugin_doc(filename):
 if __name__ == "__main__":
     # flask run --host=0.0.0.0
     # or using `python -m flask`
-    app.run(debug=False, port=5000, host="0.0.0.0")
+    app.run(debug=False, port=80, host="0.0.0.0")
