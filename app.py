@@ -1,4 +1,4 @@
-from flask import Flask, render_template, send_file, send_from_directory,jsonify, make_response
+from flask import Flask, render_template, send_file, send_from_directory,jsonify, make_response, request
 
 app = Flask(__name__)
 @app.route("/")
@@ -7,6 +7,12 @@ def index():
         render_template("index.html")
     )
     return response
+
+@app.route("/auth/bundle", method=["POST"])
+def auth_bundle():
+    server, account = request.form["server"], request.form["account"]
+    print(server, account)
+    pass
 
 # https://blog.csdn.net/xw_2_xh/article/details/96175571
 @app.route('/download/fastbuilder/mr-fastbuilder', methods=["GET"])
@@ -56,6 +62,8 @@ def get_plugin_doc(filename):
         return response
     except Exception as e:
         return jsonify({"code": 500, "message": f"啊咧? 好像出错了呢qaq\nError: {e}\n尝试联系管理员吧: qq1758489207 qq614286773"})
+
+
 
 
 if __name__ == "__main__":
