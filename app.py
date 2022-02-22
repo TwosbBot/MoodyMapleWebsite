@@ -1,6 +1,15 @@
 from flask import Flask, render_template, send_file, send_from_directory,jsonify, make_response, request
 
+from db.database import init_db, session
+import db.models as mods
+from db.models import UserPlugin, UserInfo, PluginMD5, PluginInfo, FrameInfo
+
+
 app = Flask(__name__)
+init_db()
+
+
+
 @app.route("/")
 def index():
     response = make_response(
@@ -8,11 +17,6 @@ def index():
     )
     return response
 
-@app.route("/auth/bundle", methods=["POST"])
-def auth_bundle():
-    server, account = request.form["server"], request.form["account"]
-    print(server, account)
-    pass
 
 # https://blog.csdn.net/xw_2_xh/article/details/96175571
 @app.route('/download/fastbuilder/mr-fastbuilder', methods=["GET"])
@@ -64,9 +68,14 @@ def get_plugin_doc(filename):
         return jsonify({"code": 500, "message": f"啊咧? 好像出错了呢qaq\nError: {e}\n尝试联系管理员吧: qq1758489207 qq614286773"})
 
 
-
+#
+@app.route("/auth/plugin", method=["POST"])
+def auth_plugin():
+    server, account, plugins = request.form["server"], \
+                               request.form["account"], \
+                               list(request.form["plugins"])
+    res = session.query(UserPlugin).filter(UserPlugin.account == account)
+    print(res)
 
 if __name__ == "__main__":
-    # flask run --host=0.0.0.0
-    # or using `python -m flask`
     app.run(debug=False, port=80, host="0.0.0.0")
