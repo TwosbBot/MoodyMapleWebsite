@@ -9,14 +9,12 @@ app = Flask(__name__)
 init_db()
 
 
-
 @app.route("/")
 def index():
     response = make_response(
         render_template("index.html")
     )
     return response
-
 
 # https://blog.csdn.net/xw_2_xh/article/details/96175571
 @app.route('/download/fastbuilder/mr-fastbuilder', methods=["GET"])
@@ -74,8 +72,19 @@ def auth_plugin():
     server, account, plugins = request.form["server"], \
                                request.form["account"], \
                                list(request.form["plugins"])
+    
     res = session.query(UserPlugin).filter(UserPlugin.account == account)
     print(res)
+    return ""
+
+
+@app.route("/auth/account", method=["POST, GET"])
+def auth_account():
+    account = request.form["account"]
+    res = session.query(UserInfo).filter(account)
+    print(res)
+
+    return jsonify("res": bool(res))
 
 if __name__ == "__main__":
     app.run(debug=False, port=80, host="0.0.0.0")

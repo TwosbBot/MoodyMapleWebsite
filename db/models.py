@@ -9,12 +9,14 @@ class UserInfo(Base):
 
     qq = Column(VARCHAR(10))
     account = Column(VARCHAR(16), primary_key=True)
+    comment = Column(Text)
 
-    def __init__(self, qq=None, account=None):
+    def __init__(self, qq=None, account=None, comment=None):
         self.qq = qq
         self.account = account
-
+        self.comment = comment
     # 可选
+
     def __repr__(self):
         return f"<UserInfo(qq={self.qq}, account={self.account}>"
 

@@ -4,7 +4,8 @@ from sqlalchemy.ext.declarative import declarative_base
 
 # todo 该用utf8还是utf8mb4?
 
-address = "mysql+pymysql://root:wangxuhui123.0@localhost/Moodymaple?charset=utf8mb4"
+# address = "mysql+pymysql://root:wangxuhui123.0@localhost/Moodymaple?charset=utf8mb4"
+address = "sqlite////home/ubuntu/Work/MoodyMapleWebsite/sql/Moodymaple.db"
 engine = create_engine(address)
 
 # proxy module
@@ -19,9 +20,9 @@ session = scoped_session(Session)
 
 Base = declarative_base()
 """:type: sqlalchemy.orm.DeclarativeMeta"""
+
 Base.query = session.query_property()
 
 
 def init_db():
     Base.metadata.create_all(bind=engine)
-    pass
